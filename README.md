@@ -66,7 +66,7 @@ MODIFIED: after/order.py:14-26 function process_order -> process_order (size_del
 ```bash
 git diff | python commit_poet.py
 python commit_poet.py --style limerick --path examples/order.diff
-python commit_poet.py --style haiku --seed 42 --format json < changes.diff
+python commit_poet.py --style haiku --seed 42 --format json --path examples/order.diff
 ```
 
 **Example Output**:
@@ -96,9 +96,9 @@ Keywords: decimal, calculate, discount, process, order
 
 **Usage**:
 ```bash
-python data_sanity.py --file dataset.csv
-python data_sanity.py --file data.xlsx --output clean_data.csv --ml
-python data_sanity.py --file messy.json --threshold 2.5
+python data_sanity.py --file tmp.csv
+python data_sanity.py --file tmp.csv --output clean_data.csv --ml
+python data_sanity.py --file tmp.csv --threshold 2.0
 ```
 
 **Example Output**:
@@ -163,8 +163,8 @@ Top topics:
 
 **Usage**:
 ```bash
-python logsage.py app.log system.log
-tail -f live.log | python logsage.py --since -1h
+python logsage.py sample.log
+python logsage.py --format json sample.log --top 5
 python logsage.py --format json logs/*.log --top 20
 ```
 
@@ -203,7 +203,7 @@ Top errors:
 ```bash
 python pattern_prophet.py --source bash
 python pattern_prophet.py --source git --path /my/repo
-python pattern_prophet.py --source file --path custom_activity.log --format json
+python pattern_prophet.py --source file --path examples/history/bash_history_sample.txt --format json
 ```
 
 **Example Output**:
@@ -245,6 +245,7 @@ Top tokens:
 python procgen_art.py --style plasma
 python procgen_art.py --style ember --width 100 --height 30 --interval 200
 python procgen_art.py --once --json > system_snapshot.json
+python procgen_art.py --seed 1337 --once --style waves
 python procgen_art.py --seed 1337 --once  # Deterministic output
 ```
 
@@ -271,6 +272,7 @@ CPU  45.2% | MEM  67.8% | NET   123.4 kB/s
 **Usage**:
 ```bash
 python snipvault.py add "print('Hello World')" --tag python --tag demo --lang python
+python snipvault.py add "git log --oneline -10" --tag git --tag workflow --lang bash
 python snipvault.py find --q "hello" --tag python
 python snipvault.py ls --limit 5
 python snipvault.py rm a1b2c3d4  # Remove by ID prefix
