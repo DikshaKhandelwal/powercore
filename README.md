@@ -1,15 +1,24 @@
 # PowerCore — one engine, many tiny CLIs
 
 ```
- ____                              ____                      
-|  _ \ ___  _____   _____ _ __    / ___|___  _ __ ___  ___  
-| |_) / _ \/ _ \ \ / / _ \ '__|  | |   / _ \| '__/ _ \/ __| 
-|  __/  __/  __/\ V /  __/ |     | |__| (_) | | |  __/\__ \ 
-|_|   \___|\___| \_/ \___|_|      \____\___/|_|  \___||___/ 
-                                                             
+ ____                        ____                
+|  _ \ _____      _____ _ __ / ___|___  _ __ ___ 
+| |_) / _ \ \ /\ / / _ \ '__|\___ \ _ \| '__/ _ \
+|  __/ (_) \ V  V /  __/ |   ___) |  | | |  __/
+|_|   \___/ \_/\_/ \___|_|  |____/   |_|  \___|
 ```
 
-A compact, judge-friendly toolkit: one master command (PowerCore) that cleanly delegates to focused micro-CLIs. Each tool is a single Python file (≤ 250 executable lines for most) with real demos included.
+A powerful, user-friendly toolkit that brings together essential development utilities in one place. PowerCore acts as your central command hub, providing clean access to eight specialized micro-tools. Each tool is designed to solve real problems developers face daily, packaged as lightweight Python scripts that you can trust and understand.
+
+**What's included:**
+- **semantic-diff** — Smart code comparison that understands structure and meaning
+- **pattern-prophet** — Discover hidden patterns in your bash history and git logs  
+- **commit-poet** — Transform boring diffs into creative poetry (haiku, limerick, or free verse)
+- **procgen-art** — Generate beautiful ASCII art powered by your system's live metrics
+- **data-sanity** — Automatically detect and fix common data quality issues
+- **logsage** — Intelligent log analysis and summarization
+- **focuscli** — Track your focus sessions and boost productivity
+- **snipvault** — Personal code snippet manager for your terminal
 
 - Delegated tools:
   - semantic-diff — “diffs that think”
@@ -21,20 +30,20 @@ A compact, judge-friendly toolkit: one master command (PowerCore) that cleanly d
   - focuscli — distraction killer & flow tracker
   - snipvault — snippet brain in your terminal
 
-## Install / Open
+## Getting Started
 
-No packaging needed. Requires Python 3.9+. Optional: psutil for procgen, scikit-learn for data-sanity --ml.
+PowerCore is ready to use right out of the box! Just make sure you have Python 3.9+ installed. Some tools have optional dependencies (psutil for system metrics in procgen-art, scikit-learn for advanced anomaly detection in data-sanity) but work fine without them.
 
 ```bash
-# Run from repo root
+# Run from the repository root
 ./powercore --help
 ```
 
-Tip (PATH):
+**Make it globally available (optional):**
 ```bash
-# Git Bash (current session)
+# Git Bash (add to ~/.bashrc for permanent)
 export PATH="$PATH:/d/cli"
-# Windows CMD (temporary)
+# Windows CMD (add to system PATH for permanent)
 set PATH=%PATH%;D:\cli
 ```
 
@@ -100,17 +109,9 @@ Demo (bundled bash history):
 
 ---
 
-## 3) commit-poet — diff → poem
+## 3) commit-poet — Turn Code Changes Into Art
 
-```
-   ____                _ _ _   
-  / ___|___  _ __  __| (_) |_ 
- | |   / _ \| '_ \/ _` | | __|
- | |__| (_) | | | | (_| | | |_ 
-  \____\___/|_| |_|\__,_|_|\__|
-```
-
-Takes a diff and crafts a haiku/limerick/freeform with mood inference.
+Why settle for boring commit messages when you can have poetry? commit-poet transforms your git diffs into beautiful haiku, clever limericks, or flowing free verse. It analyzes the emotional tone of your changes and crafts messages that are both meaningful and memorable.
 
 Demo (bundled diff):
 ```bash
@@ -185,17 +186,9 @@ printf "alpha=1\nalpha=1\nbeta=2\n" > sample.log
 
 ---
 
-## 7) focuscli — distraction killer & flow tracker
+## 7) focuscli — Boost Your Productivity 
 
-```
- _____           _            ____ _     
-|  ___|__  _ __| | ___  ___ / ___| |__  
-| |_ / _ \| '__| |/ _ \/ __| |   | '_ \ 
-|  _| (_) | |  | |  __/\__ \ |___| | | |
-|_|  \___/|_|  |_|\___||___/\____|_| |_|
-```
-
-Track focus sessions locally (~/.focuscli.jsonl). Start/stop, stats (total hours, streak, top topics), export.
+Stay focused and track your deep work sessions with focuscli. Start a timer when you begin focused work, stop it when you're done, and build up insights about your productivity patterns. See your longest streaks, total focus time, and which topics get your best attention.
 
 ```bash
 ./powercore focuscli start "Deep work" --notes "Refactor pricing"
