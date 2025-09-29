@@ -1,0 +1,40 @@
+# 1727485200
+pip install rich
+# 1727488800
+git status
+# 1727492400
+git push --force
+# 1727496000
+pytest -q tests/test_orders.py
+# 1727499600
+dscli sync prod
+# 1727503200
+python scripts/clean_logs.py --days 7
+# 1727589600
+docker compose up
+# 1727593200
+kubectl get pods -A
+# 1727596800
+kubectl rollout restart deploy/api
+# 1727600400
+watch -n2 kubectl get pods
+# 1727686800
+poetry install
+# 1727690400
+make lint
+# 1727694000
+make build
+# 1727773200
+git commit -am "fix: handle zero subtotal"
+# 1727776800
+git push
+# 1727780400
+python manage.py migrate
+# 1727866800
+pytest -k discount
+# 1727870400
+pytest -k loyalty
+# 1727874000
+git push --force
+# 1727956800
+npx playwright test --headed

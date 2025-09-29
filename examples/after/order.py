@@ -1,0 +1,26 @@
+from decimal import Decimal
+
+TAX_RATE = Decimal("0.085")
+MAX_DISCOUNT = Decimal("0.20")
+
+
+def calculate_discount(items, loyalty_multiplier):
+    categories = {item.get("category", "misc") for item in items}
+    base = Decimal("0.05") if len(categories) > 1 else Decimal("0.02")
+    loyalty_bonus = Decimal(str(max(loyalty_multiplier - 1.0, 0)))
+    return min(base + loyalty_bonus, MAX_DISCOUNT)
+
+
+def process_order(items, loyalty_multiplier=1.0, coupon=None):
+    subtotal = sum(Decimal(item["price"]) * item.get("qty", 1) for item in items)
+    discount = Decimal("0.0")
+    if coupon:
+        discount += Decimal(str(coupon.get("rate", 0)))
+    if loyalty_multiplier > 1.0 or coupon:
+        discount += calculate_discount(items, loyalty_multiplier)
+    discount = min(discount, MAX_DISCOUNT)
+    subtotal *= Decimal(1) - discount
+    taxed = subtotal + subtotal * TAX_RATE
+    if loyalty_multiplier > 1.0 and discount < MAX_DISCOUNT:
+        taxed *= Decimal(loyalty_multiplier)
+    return taxed.quantize(Decimal("0.01"))
